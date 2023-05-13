@@ -1,0 +1,16 @@
+[
+  {
+    "title": "About AMD's Newest CPU Line",
+    "contents": "What happened?",
+    "date_created": "04/29/2022",
+    "comments": ["something bad i guess idk", "Reverting to the FX days?"],
+    "user_id": 1
+  },
+  {
+    "title": "Why The Steam Deck is Revolutionary",
+    "contents": "Long story short, it's a huge leap in both PC gaming and mobile computing. Who needs gaming laptops?",
+    "date_created": "04/29/2022",
+    "comments": ["meh"],
+    "user_id": 2
+  }
+]
