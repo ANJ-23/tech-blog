@@ -1,11 +1,14 @@
 <div class="text-center">
   <h2>{{title}}</h2>
   <p>{{content}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  <p>Created by {{user.username}} on {{format_date date_posted}}</p>
   <p>
     <span>{{contents}}</span>
   </p>
-  {{!-- <p>
-    <button class="btn btn-primary">Fund this Project!</button>
-  </p> --}}
+  {{!-- Comments --}}
+  <h3>Comments:</h3>
+  <p>{{comments.user_id}}</p>
+  <p>
+    <span>{{comments.text}}</span>
+  </p>
 </div>
