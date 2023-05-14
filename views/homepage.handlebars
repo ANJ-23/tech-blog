@@ -3,13 +3,14 @@
 <div class="row mb-4 post">
   <div class="col-md-5">
     <h2>
-      <a href="/project/{{post.id}}">{{post.title}}</a>
+      <a href="/post/{{post.id}}">{{post.title}}</a>
     </h2>
-    <p>Created by {{post.user.username}} on {{format_date post.date_created}}</p>
+    {{!-- MAKE SURE THE KEYS MATCH WITH THE OBJECTS' (ex. post.date_posted should correspond to Posts.date_posted) --}}
+    <p>Created by {{post.user.username}} on {{format_date post.date_posted}}</p>
   </div>
   <div class="col-md-7">
     <p>
-      {{post.contents}}w
+      {{post.contents}}
     </p>
   </div>
 </div>

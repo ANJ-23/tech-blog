@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comments } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Default route - homepage
@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
 
     // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
+    console.log(posts[0].date_posted);
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
@@ -30,21 +31,50 @@ router.get('/', async (req, res) => {
 
 router.get('/post/:id', async (req, res) => {
   try {
+    // obtains Post data
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
           model: User,
           attributes: ['username'],
         },
+        {
+          model: Comments,
+          // attributes: ['text', 'date_created', 'user_id']
+        }
       ],
     });
 
-    const post = postData.get({ plain: true });
+    // obtains Comment data
+    /* const commentData = await Comments.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+        {
+          model: Post,
+        }
+      ],
+    }); */
 
+    // serializes post & comment
+    const post = postData.get({ plain: true });
+    // const comments = commentData.get({ plain: true });
+
+    // renders 'post' handlebar
     res.render('post', {
       ...post,
       logged_in: req.session.logged_in
     });
+
+    // renders 'comments' handlebar
+    
+    /* res.render('comments', {
+      ...comments,
+      logged_in: req.session.logged_in
+    }) */
+   
   } catch (err) {
     res.status(500).json(err);
   }
